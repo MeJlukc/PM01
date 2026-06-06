@@ -9,7 +9,6 @@ import { exportExcelReport } from './modules/reportStorage.js';
 import { EmployeesModule } from './modules/EmployeesModule.jsx';
 import { TimeModule } from './modules/TimeModule.jsx';
 import { ReportsModule } from './modules/ReportsModule.jsx';
-import { DocumentationModule } from './modules/DocumentationModule.jsx';
 
 function App() {
   const [tab, setTab] = useState('time');
@@ -124,12 +123,7 @@ function App() {
     <div className="app">
       <header className="hero">
         <div>
-          <p className="tag">Практика 09.02.07 · учебный React-проект</p>
           <h1>Учет времени работы сотрудников</h1>
-          <p>
-            Простое веб-приложение с модулями сотрудников, учета времени и отчетности.
-            Данные сохраняются в браузере, отчет можно посмотреть на странице и экспортировать в Excel.
-          </p>
         </div>
         <button onClick={exportExcel} className="mainButton">Экспорт Excel</button>
       </header>
@@ -138,7 +132,6 @@ function App() {
         <button className={tab === 'time' ? 'active' : ''} onClick={() => setTab('time')}>Учет времени</button>
         <button className={tab === 'employees' ? 'active' : ''} onClick={() => setTab('employees')}>Сотрудники</button>
         <button className={tab === 'report' ? 'active' : ''} onClick={() => setTab('report')}>Отчет</button>
-        <button className={tab === 'docs' ? 'active' : ''} onClick={() => setTab('docs')}>Документация</button>
       </nav>
 
       {tab === 'time' && (
@@ -167,10 +160,6 @@ function App() {
 
       {tab === 'report' && (
         <ReportsModule report={report} exportExcel={exportExcel} />
-      )}
-
-      {tab === 'docs' && (
-        <DocumentationModule resetDemoData={resetDemoData} />
       )}
     </div>
   );
